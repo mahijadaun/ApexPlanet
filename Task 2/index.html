@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact & Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header">
+    <h1>Web Project Hub</h1>
+    <nav class="navbar">
+      <a href="#contact">Contact</a>
+      <a href="#todo">To-Do</a>
+    </nav>
+  </header>
+
+  <!-- Main Grid Layout -->
+  <main class="container">
+    <!-- Contact Form -->
+    <section class="card" id="contact">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+        <p id="formMessage"></p>
+      </form>
+    </section>
+
+    <!-- To-Do List -->
+    <section class="card" id="todo">
+      <h2>My Tasks</h2>
+      <div class="todo-input">
+        <input type="text" id="todoInput" placeholder="New Task..." />
+        <button onclick="addTask()">Add</button>
+      </div>
+      <ul id="todoList"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Web Project Hub</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
