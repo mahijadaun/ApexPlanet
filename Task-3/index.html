@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern JS & UI Task</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>✨ JS Playground</h1>
+    </header>
+
+    <main>
+      <!-- Responsive Section -->
+      <div class="card">
+        <h2>📱 Responsive Design</h2>
+        <p>This layout adjusts beautifully for various screen sizes using media queries.</p>
+      </div>
+
+      <!-- Quiz Section -->
+      <div class="card">
+        <h2>🧠 Quick Quiz</h2>
+        <p class="question">What is the capital of India?</p>
+        <div class="quiz-options">
+          <button onclick="checkAnswer('a')">A. Mumbai</button>
+          <button onclick="checkAnswer('b')">B. Delhi</button>
+          <button onclick="checkAnswer('c')">C. Kolkata</button>
+        </div>
+        <p id="quiz-result" class="quiz-result"></p>
+      </div>
+
+      <!-- API Section -->
+      <div class="card">
+        <h2>😂 Random Joke</h2>
+        <button class="joke-btn" onclick="getJoke()">Tell me a Joke</button>
+        <p id="joke" class="joke-text"></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
