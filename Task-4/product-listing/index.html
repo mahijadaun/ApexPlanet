@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Store</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="main-container">
+    <aside class="sidebar">
+      <h2>Filters</h2>
+      <div class="filter-section">
+        <h3>Category</h3>
+        <label><input type="radio" name="category" value="all" checked> All</label>
+        <label><input type="radio" name="category" value="electronics"> Electronics</label>
+        <label><input type="radio" name="category" value="clothing"> Clothing</label>
+        <label><input type="radio" name="category" value="books"> Books</label>
+      </div>
+
+      <div class="filter-section">
+        <h3>Max Price</h3>
+        <input type="range" id="price-range" min="100" max="1000" value="1000">
+        <div>₹ <span id="price-display">1000</span></div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Sort by Rating</h3>
+        <select id="sort-rating">
+          <option value="default">Default</option>
+          <option value="high">High to Low</option>
+          <option value="low">Low to High</option>
+        </select>
+      </div>
+    </aside>
+
+    <section class="products" id="product-container">
+      <!-- Product cards will be inserted here -->
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
