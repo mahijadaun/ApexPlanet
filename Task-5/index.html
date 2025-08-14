@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApexShop — Demo E‑Commerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="A demo e‑commerce built for internship tasks: responsive UI, filters, sorting, cart with localStorage, form validation, and a carousel.">
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="header container">
+    <a href="#" class="logo">Apex<span>Shop</span></a>
+    <nav class="nav" aria-label="Main Navigation">
+      <button id="navToggle" class="nav__toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+      <ul id="navMenu" class="nav__menu">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button id="cartOpenBtn" class="btn btn--ghost" aria-label="Open Cart">
+            🛒 <span id="cartCount" class="badge">0</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero / Carousel -->
+  <section id="home" class="hero container">
+    <div class="carousel" aria-label="Promotions">
+      <div class="carousel__track" id="carouselTrack">
+        <div class="carousel__slide is-active">
+          <picture>
+            <img loading="lazy" src="https://unsplash.com/photos/a-person-typing-on-a-laptop-on-a-table-slLo94wES2M" alt="New arrivals banner" />
+          </picture>
+          <div class="carousel__caption">
+            <h2>New Arrivals</h2>
+            <p>Fresh styles just dropped. Explore now.</p>
+          </div>
+        </div>
+        <div class="carousel__slide">
+          <picture>
+            <img loading="lazy" src="https://picsum.photos/1200/400?random=12" alt="Big discounts banner" />
+          </picture>
+          <div class="carousel__caption">
+            <h2>Big Discounts</h2>
+            <p>Save more with weekend deals.</p>
+          </div>
+        </div>
+        <div class="carousel__slide">
+          <picture>
+            <img loading="lazy" src="https://picsum.photos/1200/400?random=13" alt="Essentials you love banner" />
+          </picture>
+          <div class="carousel__caption">
+            <h2>Essentials You Love</h2>
+            <p>Top-rated picks curated for you.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel__btn prev" id="prevSlide" aria-label="Previous Slide">‹</button>
+      <button class="carousel__btn next" id="nextSlide" aria-label="Next Slide">›</button>
+      <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Carousel Pagination"></div>
+    </div>
+  </section>
+
+  <!-- Filters + Products -->
+  <main id="products" class="container products">
+    <aside class="filters" aria-label="Product Filters">
+      <h3>Filters</h3>
+      <label class="field">
+        <span>Search</span>
+        <input type="search" id="searchInput" placeholder="Search products…" />
+      </label>
+
+      <fieldset class="field">
+        <legend>Category</legend>
+        <label><input type="checkbox" name="cat" value="fashion" checked> Fashion</label>
+        <label><input type="checkbox" name="cat" value="electronics" checked> Electronics</label>
+        <label><input type="checkbox" name="cat" value="home" checked> Home</label>
+      </fieldset>
+
+      <label class="field">
+        <span>Max Price: <strong>₹<span id="priceVal">5000</span></strong></span>
+        <input type="range" id="priceRange" min="0" max="5000" step="50" value="5000">
+      </label>
+
+      <label class="field">
+        <span>Sort by</span>
+        <select id="sortSelect">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Rating: High to Low</option>
+        </select>
+      </label>
+      <button id="clearFilters" class="btn btn--ghost">Clear Filters</button>
+    </aside>
+
+    <section class="catalog" aria-live="polite" aria-busy="false">
+      <!-- Product cards injected by JS -->
+    </section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="cart" aria-hidden="true" aria-label="Shopping Cart">
+    <div class="cart__header">
+      <h3>Your Cart</h3>
+      <button id="cartCloseBtn" class="btn btn--ghost" aria-label="Close Cart">✕</button>
+    </div>
+    <ul id="cartItems" class="cart__items"></ul>
+    <div class="cart__footer">
+      <div class="cart__total">Total: ₹<span id="cartTotal">0</span></div>
+      <button id="checkoutBtn" class="btn">Checkout</button>
+    </div>
+  </aside>
+  <div id="backdrop" class="backdrop" hidden></div>
+
+  <!-- Contact / Validation -->
+  <section id="contact" class="container contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" novalidate>
+      <div class="grid-2">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" id="name" required placeholder="Your name">
+          <small class="error"></small>
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="email" required placeholder="you@example.com">
+          <small class="error"></small>
+        </label>
+      </div>
+      <label class="field">
+        <span>Message</span>
+        <textarea id="message" rows="4" required placeholder="How can we help?"></textarea>
+        <small class="error"></small>
+      </label>
+      <button type="submit" class="btn">Send Message</button>
+      <p id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> ApexShop</p>
+      <a href="#home" class="to-top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
